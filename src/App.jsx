@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { fetchImages } from "./services/unsplash-api";
+import { fetchImages } from "./Services/unsplash-api";
 
 import SearchBar from "./Components/SearchBar/SearchBar";
 import ImageGallery from "./Components/ImageGallery/ImageGallery";
