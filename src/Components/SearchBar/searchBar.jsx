@@ -1,3 +1,4 @@
+
 import toast from "react-hot-toast";
 import s from "./SearchBar.module.css";
 

@@ -24,16 +24,21 @@ const App = () => {
       try {
         setIsLoading(true);
         setIsError(false);
+
         const data = await fetchImages(query, page);
-        
-        if (data.results.length === 0) {
+
+       
+        if (!data?.results || data.results.length === 0) {
           toast.error("Görsel bulunamadı!");
           return;
         }
-        
+
         setImages((prev) => [...prev, ...data.results]);
       } catch (error) {
         setIsError(true);
+
+        toast.error("Bir hata oluştu!");
+        console.log(error);
       } finally {
         setIsLoading(false);
       }
@@ -46,6 +51,9 @@ const App = () => {
     setQuery(newQuery);
     setImages([]);
     setPage(1);
+
+   
+    setIsError(false);
   };
 
   return (
@@ -54,13 +62,13 @@ const App = () => {
       <Toaster position="top-right" />
 
       {isError && <ErrorMessage />}
-      
+
       {images.length > 0 && (
         <ImageGallery items={images} onImageClick={setModalData} />
       )}
-      
+
       {isLoading && <Loader />}
-      
+
       {images.length > 0 && !isLoading && (
         <LoadMoreBtn onClick={() => setPage((prev) => prev + 1)} />
       )}
