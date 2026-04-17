@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { fetchImages } from "./Services/unsplash-api";
 
-import SearchBar from "./Components/SearchBar/SearchBar";
-import ImageGallery from "./Components/ImageGallery/ImageGallery";
-import Loader from "./Components/Loader/Loader";
-import ErrorMessage from "./Components/ErrorMessage/ErrorMessage";
-import LoadMoreBtn from "./Components/LoadMoreBtn/LoadMoreBtn";
-import ImageModal from "./Components/ImageModal/ImageModal";
+import SearchBar from "./Components/SearchBar/SearchBar.jsx";
+import ImageGallery from "./Components/ImageGallery/ImageGallery.jsx";
+import Loader from "./Components/Loader/Loader.jsx";
+import ErrorMessage from "./Components/ErrorMessage/ErrorMessage.jsx";
+import LoadMoreBtn from "./Components/LoadMoreBtn/LoadMoreBtn.jsx";
+import ImageModal from "./Components/ImageModal/ImageModal.jsx";
 
 const App = () => {
   const [images, setImages] = useState([]);
