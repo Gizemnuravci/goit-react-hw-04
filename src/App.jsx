@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { fetchImages } from "./Services/unsplash-api";
+import { fetchImages } from "./services/unsplash-api";
 
-import SearchBar from "./Components/SearchBar/SearchBar.jsx";
-import ImageGallery from "./Components/ImageGallery/ImageGallery.jsx";
-import Loader from "./Components/Loader/Loader.jsx";
-import ErrorMessage from "./Components/ErrorMessage/ErrorMessage.jsx";
-import LoadMoreBtn from "./Components/LoadMoreBtn/LoadMoreBtn.jsx";
-import ImageModal from "./Components/ImageModal/ImageModal.jsx";
+import SearchBar from "./components/SearchBar/SearchBar.jsx";
+import ImageGallery from "./components/ImageGallery/ImageGallery.jsx";
+import Loader from "./components/Loader/Loader.jsx";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage.jsx";
+import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.jsx";
+import ImageModal from "./components/ImageModal/ImageModal.jsx";
 
 const App = () => {
   const [images, setImages] = useState([]);
@@ -27,7 +27,6 @@ const App = () => {
 
         const data = await fetchImages(query, page);
 
-       
         if (!data?.results || data.results.length === 0) {
           toast.error("Görsel bulunamadı!");
           return;
@@ -36,7 +35,6 @@ const App = () => {
         setImages((prev) => [...prev, ...data.results]);
       } catch (error) {
         setIsError(true);
-
         toast.error("Bir hata oluştu!");
         console.log(error);
       } finally {
@@ -51,8 +49,6 @@ const App = () => {
     setQuery(newQuery);
     setImages([]);
     setPage(1);
-
-   
     setIsError(false);
   };
 
